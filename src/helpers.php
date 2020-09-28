@@ -1,19 +1,9 @@
 <?php
 
-/*
- * NOTICE OF LICENSE
- *
- * Part of the Rinvex Country Package.
- *
- * This source file is subject to The MIT License (MIT)
- * that is bundled with this package in the LICENSE file.
- *
- * Package: Rinvex Country Package
- * License: The MIT License (MIT)
- * Link:    https://rinvex.com
- */
+declare(strict_types=1);
 
-use Rinvex\Country\Loader;
+use Rinvex\Country\CountryLoader;
+use Rinvex\Country\CurrencyLoader;
 
 if (! function_exists('country')) {
     /**
@@ -26,7 +16,7 @@ if (! function_exists('country')) {
      */
     function country($code, $hydrate = true)
     {
-        return Loader::country($code, $hydrate);
+        return CountryLoader::country($code, $hydrate);
     }
 }
 
@@ -41,6 +31,21 @@ if (! function_exists('countries')) {
      */
     function countries($longlist = false, $hydrate = false)
     {
-        return Loader::countries($longlist, $hydrate);
+        return CountryLoader::countries($longlist, $hydrate);
+    }
+}
+
+if (! function_exists('currencies')) {
+    /**
+     * Get all countries short-listed.
+     *
+     * @param bool $longlist
+     * @param bool $hydrate
+     *
+     * @return array
+     */
+    function currencies($longlist = false)
+    {
+        return CurrencyLoader::currencies($longlist);
     }
 }
